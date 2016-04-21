@@ -19,7 +19,7 @@ namespace ASP.NET_MVC_6.Models
 
         [Display(Name = "博客图片")]
         [Required(ErrorMessage = "请上传你的博客图片！")]
-        [ValidateFile]
+        //[ValidateFile]
         public HttpPostedFileBase BlogPhoto { get; set; }
     }
 }

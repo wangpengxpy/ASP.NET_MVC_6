@@ -29,54 +29,54 @@
         }
     }
 
-    $(function () {
-        $("#BlogPhoto").change(function () {
-            var file = getNameFromPath($(this).val());
-            if (file != null) {
-                var errors = $(document).find(".field-validation-error");
-                $.each(errors, function (k, v) {
-                    if ($(v).attr("data-valmsg-for") === "BlogPhoto") {
-                        $(v).hide();
-                    }
-                });
-                var extension = file.substr((file.lastIndexOf('.') + 1));
-                switch (extension) {
-                    case 'jpg':
-                    case 'png':
-                    case 'gif':
-                    case 'pdf':
-                        fileTypeBool = false;
-                        break;
-                    default:
-                        fileTypeBool = true;
-                }
-            }
-            if (fileTypeBool) {
-                $("#warning").html("只能上传扩展名为jpg,png,gif,pdf的文件！");
-                return false;
-            }
-            else {
-                var size = GetFileSize('BlogPhoto');
-                if (size > 4) {
-                    fileSizeBool = true;
-                    $("#warning").html("上传文件已经超过4兆！");
-                } else {
-                    fileSizeBool = false;
-                }
-            }
-        });
+    //$(function () {
+    //    $("#BlogPhoto").change(function () {
+    //        var file = getNameFromPath($(this).val());
+    //        if (file != null) {
+    //            var errors = $(document).find(".field-validation-error");
+    //            $.each(errors, function (k, v) {
+    //                if ($(v).attr("data-valmsg-for") === "BlogPhoto") {
+    //                    $(v).hide();
+    //                }
+    //            });
+    //            var extension = file.substr((file.lastIndexOf('.') + 1));
+    //            switch (extension) {
+    //                case 'jpg':
+    //                case 'png':
+    //                case 'gif':
+    //                case 'pdf':
+    //                    fileTypeBool = false;
+    //                    break;
+    //                default:
+    //                    fileTypeBool = true;
+    //            }
+    //        }
+    //        if (fileTypeBool) {
+    //            $("#warning").html("只能上传扩展名为jpg,png,gif,pdf的文件！");
+    //            return false;
+    //        }
+    //        else {
+    //            var size = GetFileSize('BlogPhoto');
+    //            if (size > 4) {
+    //                fileSizeBool = true;
+    //                $("#warning").html("上传文件已经超过4兆！");
+    //            } else {
+    //                fileSizeBool = false;
+    //            }
+    //        }
+    //    });
 
-        $("#uploadFileSub").submit(function () {
-            $("input[type='text']").each(function (k, v) {
-                if ($(v).length) {
-                    $(v).siblings("span").hide();
-                }
-            });
-            if (fileTypeBool || fileSizeBool) {
-                return false;
-            }
-        });
-    });
+    //    $("#uploadFileSub").submit(function () {
+    //        $("input[type='text']").each(function (k, v) {
+    //            if ($(v).length) {
+    //                $(v).siblings("span").hide();
+    //            }
+    //        });
+    //        if (fileTypeBool || fileSizeBool) {
+    //            return false;
+    //        }
+    //    });
+    //});
 
 </script>
 <style type="text/css">

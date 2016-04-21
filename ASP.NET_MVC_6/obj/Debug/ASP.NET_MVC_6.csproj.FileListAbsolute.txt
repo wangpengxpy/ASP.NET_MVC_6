@@ -71,4 +71,3 @@ E:\Documents\Visual Studio 2013\Projects\ASP.NET_MVC_6\ASP.NET_MVC_6\bin\zh-Hans
 E:\Documents\Visual Studio 2013\Projects\ASP.NET_MVC_6\ASP.NET_MVC_6\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 E:\Documents\Visual Studio 2013\Projects\ASP.NET_MVC_6\ASP.NET_MVC_6\obj\Debug\ASP.NET_MVC_6.dll
 E:\Documents\Visual Studio 2013\Projects\ASP.NET_MVC_6\ASP.NET_MVC_6\obj\Debug\ASP.NET_MVC_6.pdb
-E:\Documents\Visual Studio 2013\Projects\ASP.NET_MVC_6\ASP.NET_MVC_6\obj\Debug\ASP.NET_MVC_6.csprojResolveAssemblyReference.cache

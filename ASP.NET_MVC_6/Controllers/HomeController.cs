@@ -46,13 +46,18 @@ namespace ASP.NET_MVC_6.Controllers
         [HttpPost]
         public ActionResult UploadFile(BlogModel bModel)
         {
+            var testSample = new TestSample() { UserName = "xpy0928", Id = Guid.NewGuid().ToString("N") };
             if (ModelState.IsValid)
             {
                 var fileName = bModel.BlogPhoto.FileName;
-                var filePath = Server.MapPath(string.Format("~/{0}", "File"));
-                bModel.BlogPhoto.SaveAs(Path.Combine(filePath, fileName));
+                var success = UploadManager.SaveFile(bModel.BlogPhoto.InputStream, fileName, testSample.UserName, testSample.Id);
+                if (!success) { 
+                
+                }
+                //var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+                //bModel.BlogPhoto.SaveAs(Path.Combine(filePath, fileName));
                 ModelState.Clear();
-            }          
+            }
             return View();
         }
     }
