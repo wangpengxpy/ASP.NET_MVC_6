@@ -130,7 +130,8 @@ namespace ASP.NET_MVC_6.Models
         public static string GetTempFilePath(string fileName)
         {
             fileName = fileName + TempExtension;
-            return Path.Combine(@HostingEnvironment.ApplicationPhysicalPath, Path.Combine(UploadFolderPhysicalPath, fileName));
+            //Path.Combine(@HostingEnvironment.ApplicationPhysicalPath, Path.Combine(UploadFolderPhysicalPath, fileName));
+            return Path.Combine(UploadFolderPhysicalPath, fileName);
         }
 
         public static string GetTargetFilePath(string fileName, string contentType, string contentId, string culture = "",
