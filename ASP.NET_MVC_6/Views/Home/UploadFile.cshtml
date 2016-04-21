@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "UploadFile";
+}
+
+@using ASP.NET_MVC_6.Models;
+
+@model BlogModel
+<h2>UploadFile</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/jscript">
+    var fileSizeBool = false;
+    var fileTypeBool = false;
+    function GetFileSize(fileid) {
+        var fileSize = 0;
+        fileSize = $("#" + fileid)[0].files[0].size;
+        fileSize = fileSize / 1048576;
+        return fileSize;
+    }
+
+    function getNameFromPath(strFilepath) {
+        var objRE = new RegExp(/([^\/\\]+)$/);
+        var strName = objRE.exec(strFilepath);
+
+        if (strName == null) {
+            return null;
+        }
+        else {
+            return strName[0];
+        }
+    }
+
+    $(function () {
+        $("#BlogPhoto").change(function () {
+            var file = getNameFromPath($(this).val());
+            if (file != null) {
+                var errors = $(document).find(".field-validation-error");
+                $.each(errors, function (k, v) {
+                    if ($(v).attr("data-valmsg-for") === "BlogPhoto") {
+                        $(v).hide();
+                    }
+                });
+                var extension = file.substr((file.lastIndexOf('.') + 1));
+                switch (extension) {
+                    case 'jpg':
+                    case 'png':
+                    case 'gif':
+                    case 'pdf':
+                        fileTypeBool = false;
+                        break;
+                    default:
+                        fileTypeBool = true;
+                }
+            }
+            if (fileTypeBool) {
+                $("#warning").html("只能上传扩展名为jpg,png,gif,pdf的文件！");
+                return false;
+            }
+            else {
+                var size = GetFileSize('BlogPhoto');
+                if (size > 4) {
+                    fileSizeBool = true;
+                    $("#warning").html("上传文件已经超过4兆！");
+                } else {
+                    fileSizeBool = false;
+                }
+            }
+        });
+
+        $("#uploadFileSub").submit(function () {
+            $("input[type='text']").each(function (k, v) {
+                if ($(v).length) {
+                    $(v).siblings("span").hide();
+                }
+            });
+            if (fileTypeBool || fileSizeBool) {
+                return false;
+            }
+        });
+    });
+
+</script>
+<style type="text/css">
+    .field-validation-error {
+        color: red;
+    }
+</style>
+<form id="uploadFileSub" action="/Home/UploadFile" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend></legend>
+        <ul class="lifile">
+            <li>
+                @Html.LabelFor(m => m.BlogName)<br />
+                @Html.TextBoxFor(m => m.BlogName, new { maxlength = 50 })
+                @Html.ValidationMessageFor(m => m.BlogName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.BlogAddress)<br />
+                @Html.TextBoxFor(m => m.BlogAddress, new { maxlength = 200 })
+                @Html.ValidationMessageFor(m => m.BlogAddress)<br />
+            </li>
+            <li>
+                @Html.LabelFor(m => m.BlogPhoto)
+                @Html.TextBoxFor(m => m.BlogPhoto, new { type = "file" })
+                @Html.ValidationMessageFor(m => m.BlogPhoto)
+                <span id="warning" style="color:red;font-size:large;"></span>
+            </li>
+            <li>
+                <input type="submit" value="提交" />
+            </li>
+        </ul>
+
+    </fieldset>
+</form>
