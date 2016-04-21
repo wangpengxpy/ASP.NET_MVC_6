@@ -69,7 +69,7 @@ namespace ASP.NET_MVC_6.Models
                     targetPath = GetTargetFilePath(fileName, contentType, contentId, string.Empty, FilesSubdir);
 
 
-                    // 若上传文件夹未存在则创建
+                    //若上传文件夹中子文件夹未存在则创建
                     var file = new FileInfo(targetPath);
                     if (file.Directory != null && !file.Directory.Exists)
                         file.Directory.Create();
