@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Hosting;
 
-namespace ASP.NET_MVC_6.Models
+namespace ASP.NET_MVC_6.Utils
 {
     public static class UploadManager
     {
@@ -54,7 +54,6 @@ namespace ASP.NET_MVC_6.Models
         public static bool SaveFile(Stream stream, string fileName, string userName, string guid)
         {
             string tempPath = string.Empty, targetPath = string.Empty;
-            long fileLength = 0;
 
             try
             {
@@ -78,7 +77,6 @@ namespace ASP.NET_MVC_6.Models
                     {
                         if (stream.Length > 0)
                         {
-                            fileLength = stream.Length;
                             SaveFile(stream, fs);
                         }
                         fs.Close();

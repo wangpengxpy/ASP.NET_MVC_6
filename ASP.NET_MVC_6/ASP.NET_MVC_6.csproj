@@ -170,7 +170,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TestSample.cs" />
-    <Compile Include="Models\UploadManager.cs" />
+    <Compile Include="Utils\UploadManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
