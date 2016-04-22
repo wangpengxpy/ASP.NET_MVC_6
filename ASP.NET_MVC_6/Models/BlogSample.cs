@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ASP.NET_MVC_6.Models
 {
-    public class TestSample
+    public class BlogSample
     {
         public string UserName { get; set; }
 
