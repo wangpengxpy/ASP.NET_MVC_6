@@ -107,7 +107,7 @@ namespace ASP.NET_MVC_6.Utils
         }
 
         /// <summary>
-        /// 读取流到文件中
+        /// 循环读取流到文件流中
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="fs"></param>
